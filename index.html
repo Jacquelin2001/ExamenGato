@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Juego Gato</title>
+   <meta charset="utf-8">
+   <link rel="stylesheet" type="text/css" href="css/estilo.css">
+   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+     <link rel="stylesheet" type="text/css" href="animate.css">
+     <script type="text/javascript" src="js/propio.js"></script>  
+     <script type="text/javascript" src="js/jquery.js"></script>
+     <script type="text/javascript" src="js/popper.min.js"></script>
+     <script>
+  $(document).ready(function(){
+
+     $(".container").hide();
+     $(".adicional").hide();
+     $(".container2").hide();
+     animar();
+
+   function animar()
+  {
+    
+      $(".preload").delay(4000).fadeOut('slow');
+      $(".container").delay(5000).fadeIn('slow');
+      $(".adicional").delay(5000).fadeIn('slow');
+      $(".container2").delay(5000).fadeIn('slow');
+
+  }
+  
+    var i = 0;
+    var PuntosO = 0;
+    var PuntosX = 0;
+
+    $(".cuadrado").click(function(){
+    
+        if(i==0){
+          $(this).html("O");
+          i=1;
+      }else{
+          $(this).html("X");
+          i=0;
+      }
+
+      if (($('#b1').html() == 'O' && $('#b2').html() == 'O' && $('#b3').html() == 'O') || 
+         ($('#b4').html() == 'O' && $('#b5').html() == 'O' && $('#b6').html() == 'O') || 
+         ($('#b7').html() == 'O' && $('#b8').html() == 'O' && $('#b9').html() == 'O') ||
+         ($('#b1').html() == 'O' && $('#b5').html() == 'O' && $('#b9').html() == 'O') || 
+         ($('#b3').html() == 'O' && $('#b5').html() == 'O' && $('#b7').html() == 'O') || 
+         ($('#b1').html() == 'O' && $('#b4').html() == 'O' && $('#b7').html() == 'O') ||
+         ($('#b2').html() == 'O' && $('#b5').html() == 'O' && $('#b8').html() == 'O') || 
+         ($('#b3').html() == 'O' && $('#b6').html() == 'O' && $('#b9').html() == 'O')) 
+      {
+        PuntosO++;
+        alert("Ganador O");
+        $('#PO').html(PuntosO);
+        $('#b1,#b2,#b3,#b4,#b5,#b6,#b7,#b8,#b9').html("-");
+      }
+    
+    if (($('#b1').html() == 'X' && $('#b2').html() == 'X' && $('#b3').html() == 'X') || 
+       ($('#b4').html() == 'X' && $('#b5').html() == 'X' && $('#b6').html() == 'X') || 
+       ($('#b7').html() == 'X' && $('#b8').html() == 'X' && $('#b9').html() == 'X') ||
+       ($('#b1').html() == 'X' && $('#b5').html() == 'X' && $('#b9').html() == 'X') || 
+       ($('#b3').html() == 'X' && $('#b5').html() == 'X' && $('#b7').html() == 'X') || 
+       ($('#b1').html() == 'X' && $('#b4').html() == 'X' && $('#b7').html() == 'X') ||
+       ($('#b2').html() == 'X' && $('#b5').html() == 'X' && $('#b8').html() == 'X') || 
+       ($('#b3').html() == 'X' && $('#b6').html() == 'X' && $('#b9').html() == 'X')) 
+    {
+      PuntosX++;
+      alert("Ganador X");
+      $('#PX').html(PuntosX);
+      $('#b1,#b2,#b3,#b4,#b5,#b6,#b7,#b8,#b9').html("-");
+    } 
+    });
+  });
+ </script>
+
+</head>
+<body style="background-color:#5A5A5A;">
+<audio autoplay preload="auto" loop src="SpaceCats.mp3"></audio>
+
+<div class="adicional" style="margin-top: -100px;">
+  <div class="logo animated bounce infinite col-xs-12 col-sm-12 col-md-12"> Juego del <span style="color: darkturquoise;">Gato</span></div>
+</div>
+
+
+<div class="container">
+<div class="row">
+  <div class="cuadrado col-xs-4 col-sm-4 col-md-4" id="b1">-</div>
+  <div class="cuadrado col-xs-4 col-sm-4 col-md-4" id="b2">-</div>
+  <div class="cuadrado col-xs-4 col-sm-4 col-md-4" id="b3">-</div>
+</div>
+<div class="row">
+  <div class="cuadrado col-xs-4 col-sm-4 col-md-4" id="b4">-</div>
+  <div class="cuadrado col-xs-4 col-sm-4 col-md-4" id="b5">-</div>
+  <div class="cuadrado col-xs-4 col-sm-4 col-md-4" id="b6">-</div>
+</div>
+<div class="row">
+  <div class="cuadrado col-xs-4 col-sm-4 col-md-4" id="b7">-</div>
+  <div class="cuadrado col-xs-4 col-sm-4 col-md-4" id="b8">-</div>
+  <div class="cuadrado col-xs-4 col-sm-4 col-md-4" id="b9">-</div>
+</div>
+</div>
+
+
+<div class="preload">
+  <div class="logo animated bounce infinite col-xs-12 col-sm-12 col-md-12"> Juego del <span style="color: darkturquoise;">Gato</span></div>
+  <div class="loader-frame col-xs-12 col-sm-12 col-md-12 d-flex justify-content-center">
+    <div class="loader2"></div>
+  </div>
+</div>
+
+<div class="container2">
+<div class="otrotexto d-flex justify-content-between" style="margin-top: -200px">
+    <span style="color: white; right: -200px; position: relative;">Puntos O=</span>
+    <span id="PO" style="color: white; right: 180px; position: relative;">-</span>
+    <span style="color: white; right: -150px; position: relative;">Puntos X=</span>
+    <span id="PX" style="color: white; right: 230px; position: relative;">-</span>
+  </div>
+</div>
+
+</body>
+</html>
